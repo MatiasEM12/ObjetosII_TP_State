@@ -1,15 +1,17 @@
 package ejercicio_2;
 
 
+
+
 public class Calculadora {
-    static final double VALOR_INICIAL = 0.0;
-    static final String MSG_ESTADO_ERROR = "La calculadora está en estado de error";
+
+
     private double valorAcumulado;
     private EstadoCalculadora estado;
 
     public Calculadora() {
-        this.estado = EstadoCalculadora.INICIAL;
-        this.valorAcumulado = VALOR_INICIAL;
+        this.estado = new Inicial(this);
+        this.valorAcumulado = estado.valorInicial();
     }
 
     String estado() {
@@ -21,40 +23,29 @@ public class Calculadora {
     }
 
     public void mas() {
-
         estado.mas();
-        /*
-
-        } else if (estado == EstadoCalculadora.ESPERANDO_OPERANDO) {
-            this.estado = EstadoCalculadora.ERROR;
-        } else if (estado == EstadoCalculadora.ERROR) {
-            System.out.println(MSG_ESTADO_ERROR);
-        }*/
     }
 
     public void borrar() {
-        this.estado = EstadoCalculadora.INICIAL;
-        this.valorAcumulado = VALOR_INICIAL;
+        estado.borrar();
+
     }
 
     public void valor(double valor) {
-        if (estado == EstadoCalculadora.INICIAL) {
-            this.valorAcumulado = valor;
-        } else if (estado == EstadoCalculadora.ESPERANDO_OPERANDO) {
-            this.valorAcumulado += valor;
-            this.estado = EstadoCalculadora.INICIAL;
-        } else if (estado == EstadoCalculadora.ERROR) {
-            System.out.println(MSG_ESTADO_ERROR);
-        }
+
+        this.valorAcumulado = estado.valor(valor);
+
     }
 
     public void mostrar() {
-        if (estado == EstadoCalculadora.INICIAL) {
-            System.out.println(this.valorAcumulado);
-        } else if (estado == EstadoCalculadora.ESPERANDO_OPERANDO) {
-            this.estado = EstadoCalculadora.ERROR;
-        } else {
-            System.out.println(MSG_ESTADO_ERROR);
-        }
+        estado.mostrar();
+    }
+
+    public  double valorAcumulado(){
+        return valorAcumulado;
+    }
+
+    public void cambiarValorAcumulado(double valor){
+        this.valorAcumulado = valor;
     }
 }

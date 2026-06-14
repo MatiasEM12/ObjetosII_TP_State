@@ -2,6 +2,7 @@ package ejercicio_2;
 
 public class EsperandoOperando implements EstadoCalculadora{
 
+    public static final String NOMBRE = "ESPERANDO_OPERANDO";
     private Calculadora calculadora;
 
     public  EsperandoOperando (Calculadora calculadora){
@@ -10,7 +11,7 @@ public class EsperandoOperando implements EstadoCalculadora{
 
     @Override
     public String name() {
-        return "";
+        return NOMBRE;
     }
 
     @Override
@@ -20,16 +21,23 @@ public class EsperandoOperando implements EstadoCalculadora{
 
     @Override
     public void borrar() {
-
+        calculadora.cambiarEstado(new Inicial(calculadora));
+        calculadora.cambiarValorAcumulado(new Inicial(calculadora).valorInicial());
     }
 
     @Override
-    public void valor(double valor) {
-
+    public double valor(double valor) {
+        calculadora.cambiarEstado(new Inicial(calculadora));
+        return calculadora.valorAcumulado() + valor;
     }
 
     @Override
     public void mostrar() {
+        calculadora.cambiarEstado(new Error(calculadora));
+    }
 
+    @Override
+    public double valorInicial() {
+        return new Inicial(calculadora).valorInicial();
     }
 }

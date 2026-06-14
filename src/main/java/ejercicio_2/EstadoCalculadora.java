@@ -9,7 +9,9 @@ public interface EstadoCalculadora {
 
     public void borrar();
 
-    public void valor(double valor);
+    public double valor(double valor);
 
     public void mostrar();
+
+    double valorInicial();
 }
