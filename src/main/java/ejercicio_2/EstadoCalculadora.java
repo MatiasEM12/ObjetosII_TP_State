@@ -1,23 +1,28 @@
 package ejercicio_2;
 
 
-public interface EstadoCalculadora {
+public abstract class EstadoCalculadora {
 
-    public  String name();
+    protected Calculadora calculadora;
 
-    public void mas();
+    protected EstadoCalculadora (Calculadora calculadora){
+        this.calculadora = calculadora;
+    }
+    public  abstract String name();
 
-    public void borrar();
+    public abstract void mas();
 
-    public double valor(double valor);
+    public abstract void borrar();
 
-    public void menos(double valor);
+    public abstract double valor(double valor);
 
-    public  void dividido (double valor);
+    public abstract void menos();
 
-    public void por(double valor);
+    public  abstract void dividido ();
 
-    public void mostrar();
+    public abstract void por();
 
-    double valorInicial();
+    public abstract void mostrar();
+
+    public abstract double valorInicial();
 }

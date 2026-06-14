@@ -1,13 +1,12 @@
 package ejercicio_2;
 
-public class EsperandoOperando implements EstadoCalculadora{
+public class EsperandoOperando extends EstadoCalculadora{
 
     public static final String NOMBRE = "ESPERANDO_OPERANDO";
-    private Calculadora calculadora;
     private Operacion operacion;
 
     public  EsperandoOperando (Calculadora calculadora, Operacion operacion){
-        this.calculadora = calculadora;
+        super(calculadora);
         this.operacion = operacion;
     }
 
@@ -41,17 +40,17 @@ public class EsperandoOperando implements EstadoCalculadora{
     }
 
     @Override
-    public void menos(double valor) {
+    public void menos() {
         calculadora.cambiarEstado(new Error(calculadora));
     }
 
     @Override
-    public void dividido(double valor) {
+    public void dividido() {
         calculadora.cambiarEstado(new Error(calculadora));
     }
 
     @Override
-    public void por(double valor) {
+    public void por() {
         calculadora.cambiarEstado(new Error(calculadora));
     }
 

@@ -1,12 +1,12 @@
 package ejercicio_2;
 
-public class Error implements EstadoCalculadora{
+public class Error extends EstadoCalculadora{
     static final String MSG_ESTADO_ERROR = "La calculadora está en estado de error";
     public static final String NOMBRE = "ERROR";
-    private Calculadora calculadora;
+
 
     public  Error (Calculadora calculadora){
-        this.calculadora = calculadora;
+        super(calculadora);
     }
     @Override
     public String name() {
@@ -31,17 +31,17 @@ public class Error implements EstadoCalculadora{
     }
 
     @Override
-    public void menos(double valor) {
+    public void menos() {
         System.out.println(MSG_ESTADO_ERROR);
     }
 
     @Override
-    public  void dividido(double valor) {
+    public  void dividido() {
         System.out.println(MSG_ESTADO_ERROR);
     }
 
     @Override
-    public void por(double valor) {
+    public void por() {
         System.out.println(MSG_ESTADO_ERROR);
     }
 

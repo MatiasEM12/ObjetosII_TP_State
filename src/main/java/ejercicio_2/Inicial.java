@@ -1,12 +1,12 @@
 package ejercicio_2;
 
-public class Inicial implements EstadoCalculadora{
+public class Inicial extends EstadoCalculadora{
 
     public static final String NOMBRE = "INICIAL";
-    private Calculadora calculadora;
+
     static final double VALOR_INICIAL = 0.0;
     public  Inicial (Calculadora calculadora){
-        this.calculadora = calculadora;
+        super(calculadora);
     }
 
     @Override
@@ -31,17 +31,17 @@ public class Inicial implements EstadoCalculadora{
     }
 
     @Override
-    public void menos(double valor) {
+    public void menos() {
         calculadora.cambiarEstado(new EsperandoOperando(calculadora, new Resta()));
     }
 
     @Override
-    public void dividido(double valor) {
+    public void dividido() {
         calculadora.cambiarEstado(new EsperandoOperando(calculadora, new Divicion()));
     }
 
     @Override
-    public void por(double valor) {
+    public void por() {
         calculadora.cambiarEstado(new EsperandoOperando(calculadora, new Multiplicacion()));
     }
 
