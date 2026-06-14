@@ -11,6 +11,12 @@ public interface EstadoCalculadora {
 
     public double valor(double valor);
 
+    public void menos(double valor);
+
+    public  void dividido (double valor);
+
+    public void por(double valor);
+
     public void mostrar();
 
     double valorInicial();

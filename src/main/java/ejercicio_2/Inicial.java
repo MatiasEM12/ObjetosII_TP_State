@@ -16,8 +16,7 @@ public class Inicial implements EstadoCalculadora{
 
     @Override
     public void mas() {
-
-        calculadora.cambiarEstado(new EsperandoOperando(calculadora));
+        calculadora.cambiarEstado(new EsperandoOperando(calculadora, new Suma()));
     }
 
     @Override
@@ -30,6 +29,22 @@ public class Inicial implements EstadoCalculadora{
     public double valor(double valor) {
         return valor;
     }
+
+    @Override
+    public void menos(double valor) {
+        calculadora.cambiarEstado(new EsperandoOperando(calculadora, new Resta()));
+    }
+
+    @Override
+    public void dividido(double valor) {
+        calculadora.cambiarEstado(new EsperandoOperando(calculadora, new Divicion()));
+    }
+
+    @Override
+    public void por(double valor) {
+        calculadora.cambiarEstado(new EsperandoOperando(calculadora, new Multiplicacion()));
+    }
+
 
     @Override
     public void mostrar() {

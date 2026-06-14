@@ -4,9 +4,11 @@ public class EsperandoOperando implements EstadoCalculadora{
 
     public static final String NOMBRE = "ESPERANDO_OPERANDO";
     private Calculadora calculadora;
+    private Operacion operacion;
 
-    public  EsperandoOperando (Calculadora calculadora){
+    public  EsperandoOperando (Calculadora calculadora, Operacion operacion){
         this.calculadora = calculadora;
+        this.operacion = operacion;
     }
 
     @Override
@@ -27,9 +29,32 @@ public class EsperandoOperando implements EstadoCalculadora{
 
     @Override
     public double valor(double valor) {
-        calculadora.cambiarEstado(new Inicial(calculadora));
-        return calculadora.valorAcumulado() + valor;
+
+        try {
+            calculadora.cambiarEstado(new Inicial(calculadora));
+            return operacion.operacion(calculadora.valorAcumulado(),valor);
+        }catch (RuntimeException e){
+            calculadora.cambiarEstado(new Error(calculadora));
+        }
+
+        return 0;
     }
+
+    @Override
+    public void menos(double valor) {
+        calculadora.cambiarEstado(new Error(calculadora));
+    }
+
+    @Override
+    public void dividido(double valor) {
+        calculadora.cambiarEstado(new Error(calculadora));
+    }
+
+    @Override
+    public void por(double valor) {
+        calculadora.cambiarEstado(new Error(calculadora));
+    }
+
 
     @Override
     public void mostrar() {

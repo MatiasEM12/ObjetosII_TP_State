@@ -31,6 +31,21 @@ public class Error implements EstadoCalculadora{
     }
 
     @Override
+    public void menos(double valor) {
+        System.out.println(MSG_ESTADO_ERROR);
+    }
+
+    @Override
+    public  void dividido(double valor) {
+        System.out.println(MSG_ESTADO_ERROR);
+    }
+
+    @Override
+    public void por(double valor) {
+        System.out.println(MSG_ESTADO_ERROR);
+    }
+
+    @Override
     public void mostrar() {
         System.out.println(MSG_ESTADO_ERROR);
     }
