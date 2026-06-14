@@ -8,6 +8,7 @@ public abstract class Estado {
     static final String MSG_ERROR_AGREGAR_PRODUCTO = "No se pueden agregar productos en este estado";
 
     protected OrdenDeCompra ordenDeCompra;
+    protected String name;
 
     protected Estado  (OrdenDeCompra ordenDeCompra){
         this.ordenDeCompra = ordenDeCompra;
@@ -17,4 +18,8 @@ public abstract class Estado {
     public abstract void confirmarCompra();
     public abstract void enviar();
     public abstract void cancelar();
+
+    public String name(){
+        return name;
+    }
 }

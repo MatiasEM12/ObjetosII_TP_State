@@ -5,6 +5,7 @@ public class Cancelada extends Estado{
 
    public Cancelada (OrdenDeCompra ordenDeCompra){
        super(ordenDeCompra);
+       this.name = "CANCELADA";
    }
 
     @Override

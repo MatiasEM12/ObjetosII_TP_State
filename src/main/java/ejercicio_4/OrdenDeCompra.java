@@ -37,8 +37,8 @@ public class OrdenDeCompra {
         estado.cancelar();
     }
 
-    public Estado estado() {
-        return this.estado;
+    public String estado() {
+        return this.estado.name();
     }
 
     public double monto() {

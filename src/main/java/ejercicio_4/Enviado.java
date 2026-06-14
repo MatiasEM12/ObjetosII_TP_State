@@ -3,9 +3,9 @@ package ejercicio_4;
 public class Enviado extends Estado {
 
 
-
     public Enviado (OrdenDeCompra ordenDeCompra){
         super(ordenDeCompra);
+        this.name = "ENVIADO";
     }
     @Override
     public void agregarProducto(Producto producto) {

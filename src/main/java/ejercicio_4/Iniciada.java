@@ -6,6 +6,8 @@ public class Iniciada extends Estado{
 
     public Iniciada (OrdenDeCompra ordenDeCompra){
         super(ordenDeCompra);
+        this.name = "INICIADA";
+
     }
 
     @Override

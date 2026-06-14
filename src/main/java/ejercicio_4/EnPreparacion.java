@@ -4,6 +4,7 @@ public class EnPreparacion extends Estado{
 
     public EnPreparacion(OrdenDeCompra ordenDeCompra){
         super(ordenDeCompra);
+        this.name = "EN_PREPARACION";
     }
 
     @Override
